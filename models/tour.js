@@ -6,18 +6,34 @@ const TourSchema = {
     type: String,
     require: [true, 'El nombre es requerido'],
   },
-  date: {
-    type: Date,
-    require: [true, 'La fecha es reuerida'],
+  description: {
+    type: String,
+    required: false,
+  },
+  status: {
+    type: String,
+    default: true,
   },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     require: true,
   },
-  meetingPlace: {
+  date: {
+    type: Date,
+    require: [true, 'La fecha es reuerida'],
+  },
+  route: {
+      type: [String],
+      require: [true, 'La  ruta a seguir es requerida'],
+    },
+    meetingPlace: {
+      type: [String],
+      require: [true, 'El lugar de encuentro es requerido'],
+    },
+  paymentNetwork: {
     type: [String],
-    require: [true, 'El lugar de encuentro es requerido'],
+    require: [true, 'El metodo de pago es requerido'],
   },
 }
 

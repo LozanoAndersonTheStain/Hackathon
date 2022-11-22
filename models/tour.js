@@ -30,6 +30,14 @@ const TourSchema = {
     type: Date,
     require: [true, 'La fecha es reuerida'],
   },
+  maximumAmountPeople: {
+    type: Number,
+    required: [true, "La cantidad de personas es reuerida"],
+  },
+  minimumAmountPeople: {
+    type: Number,
+    required: [true, "La cantidad minima es requerida"],
+  },
   route: {
       type: [String],
       require: [true, 'La  ruta a seguir es requerida'],

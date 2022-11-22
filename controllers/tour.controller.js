@@ -4,7 +4,7 @@ const { Tour } = require('../models')
 
 const createTour = async (req = request, res = response) => {
   try {
-    let { name, description, date, ...body } = req.body
+    let { name, description, ...body } = req.body
 
     name = name.toLowerCase().trim()
     const tourBD = await Tour.findOne({ name })

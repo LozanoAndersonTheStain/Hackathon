@@ -8,11 +8,15 @@ const TourSchema = {
   },
   description: {
     type: String,
-    required: false,
+    required: [true, "La descripción es requerida"],
   },
   status: {
     type: String,
     default: true,
+  },
+  guie: {
+    type: [String],
+    required: [true, "El guia es requerido"]
   },
   user: {
     type: Schema.Types.ObjectId,

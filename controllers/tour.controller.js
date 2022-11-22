@@ -4,8 +4,8 @@ const { Tour } = require('../models')
 
 const createTour = async (req = request, res = response) => {
   try {
-    let { name, description, ...body } = req.body
-    
+    let { name, description, date, ...body } = req.body
+
     name = name.toLowerCase().trim()
     const tourBD = await Tour.findOne({ name })
 
@@ -14,17 +14,20 @@ const createTour = async (req = request, res = response) => {
         msg: `Ya existe un tour un el nombre ${name}`,
       })
     }
-    
+
     data = {
       ...body,
-      name: '',
-      description: '',
+      name: name,
+      description: description,
+      user: req.authenticatedUser.id,
+      createdAt: DateTime.now(),
     }
 
     const tour = new Tour(data)
+    tour.save()
 
     res.json({
-      ok: 'True',
+      tour,
     })
   } catch (error) {
     console.log(error)

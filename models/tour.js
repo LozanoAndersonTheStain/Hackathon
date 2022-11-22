@@ -19,6 +19,9 @@ const TourSchema = {
     ref: 'User',
     require: true,
   },
+  imageUrl:{
+    type:String,
+  },
   date: {
     type: Date,
     require: [true, 'La fecha es reuerida'],
@@ -27,7 +30,7 @@ const TourSchema = {
       type: [String],
       require: [true, 'La  ruta a seguir es requerida'],
     },
-    meetingPlace: {
+  meetingPlace: {
       type: [String],
       require: [true, 'El lugar de encuentro es requerido'],
     },
@@ -35,6 +38,10 @@ const TourSchema = {
     type: [String],
     require: [true, 'El metodo de pago es requerido'],
   },
+  createdAt: {
+    type: Date,
+    required: true
+  }
 }
 
 module.exports = model('Tour', TourSchema)

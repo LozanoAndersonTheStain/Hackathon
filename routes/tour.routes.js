@@ -1,6 +1,11 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
-const { createTour, createBookingTour } = require('../controllers')
+const {
+  createTour,
+  createBookingTour,
+  findAllTours,
+  findAllBooking,
+} = require('../controllers')
 const { validateFields, validateJWT, isRole } = require('../middlewares')
 
 const router = Router()
@@ -27,6 +32,8 @@ router.post(
   createTour
 )
 
+router.get('/', findAllTours)
+
 router.post(
   '/booking',
   [
@@ -43,5 +50,7 @@ router.post(
   ],
   createBookingTour
 )
+
+router.get('/booking', findAllBooking)
 
 module.exports = router

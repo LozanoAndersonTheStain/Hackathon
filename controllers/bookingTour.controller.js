@@ -10,11 +10,12 @@ const createBookingTour = async (req = required, res = response) => {
     data = {
       ...body,
       name: name,
-      createdAt: DateTime.now(),
       date: date,
+      createdAt: DateTime.now(),
     }
 
     const tourBooking = new Booking(data)
+    tourBooking.save()
 
     res.json({
       tourBooking,

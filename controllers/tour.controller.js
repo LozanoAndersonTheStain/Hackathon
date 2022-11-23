@@ -4,7 +4,7 @@ const { Tour } = require('../models')
 
 const createTour = async (req = request, res = response) => {
   try {
-    let { name, description, ...body } = req.body
+    let { name, ...body } = req.body
 
     name = name.toLowerCase().trim()
     const tourBD = await Tour.findOne({ name })
@@ -18,7 +18,6 @@ const createTour = async (req = request, res = response) => {
     data = {
       ...body,
       name: name,
-      description: description,
       user: req.authenticatedUser.id,
       createdAt: DateTime.now(),
     }
